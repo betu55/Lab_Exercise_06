@@ -94,7 +94,21 @@ else{
             2. Use the id on put method of indexedDB
             
             */
-           
+           let transaction = DB.transaction(['tasks'], 'readwrite');
+           let objectStore = transaction.objectStore('tasks');
+   
+           let getTask = {
+               taskname: taskInputt.value,
+               date : Date.now(),
+               id: id,
+           }
+   
+           if(getTask.id == '0'){
+                null;
+           }
+           else{
+                objectStore.put(getTask);
+           }
    
             history.back();
         }
